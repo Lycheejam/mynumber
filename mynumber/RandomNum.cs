@@ -10,14 +10,14 @@ namespace mynumber
     {
         //どこで宣言するのが正しい？
         //メソッドでいちいち宣言するより一回だけの方がええよね？
-        public Random r = new Random();
+        private Random r = new Random();
 
         /// <summary>
-        /// ランダム変数生成
+        /// 乱数生成
         /// 引数で渡した桁数の乱数を生成する。
         /// </summary>
-        /// <param name="digits"></param>
-        /// <returns></returns>
+        /// <param name="digits">桁数</param>
+        /// <returns>ランダム整数（配列）</returns>
         public int[] randNum(int digits)
         {
             int[] numArry = new int[digits];
@@ -33,8 +33,8 @@ namespace mynumber
         /// マイナンバーと住民票コードのチェックデジット計算
         /// 乱数の格納された配列を渡してあげてね。
         /// </summary>
-        /// <param name="numArry"></param>
-        /// <returns></returns>
+        /// <param name="numArry">乱数の配列</param>
+        /// <returns>チェックデジット</returns>
         public int chkDigits(int[] numArry)
         {
             Double chkdigit = 0;
@@ -47,15 +47,16 @@ namespace mynumber
 
             //2~7の重みを計算
             //これだとマイナンバーの11桁と住民票コードの10桁にしか対応できないけどまあいい？
-            for (int i = 0; i < numArry.Length; i++){
+            foreach (var item in numArry){
                 //Qnを求める
-                if (0 < i + 1 && i + 1 < 7){
-                    qn = i + 1;
-                }else if (6 < i + 1 && i + 1 < 12){
-                    qn = i - 5;
+                if (0 < item + 1 && item + 1 < 7){
+                    qn = item + 1;
+                }
+                else if (6 < item + 1 && item + 1 < 12){
+                    qn = item - 5;
                 }
                 //Qnとマイナンバーの各桁を掛けて和を取る
-                sumPQ = sumPQ + numArry[i] * qn;
+                sumPQ = sumPQ + item * qn;
             }
             //和 mod 11
             chkdigit = (Double)sumPQ % 11;
@@ -73,11 +74,12 @@ namespace mynumber
             //整数型でチェックデジットを返す。
             return (int)chkdigit;
         }
+
         /// <summary>
         /// 法人番号のチェックデジット算出
         /// </summary>
-        /// <param name="numArry"></param>
-        /// <returns></returns>
+        /// <param name="numArry">乱数配列</param>
+        /// <returns>チェックデジット</returns>
         public int chkComDigits(int[] numArry)
         {
             Double chkdigit = 0;
@@ -89,17 +91,15 @@ namespace mynumber
             Array.Reverse(numArry);
 
             //1,2の重みを割り当てる
-            for (int i = 0; i < numArry.Length; i++)
-            {
+            foreach (var item in numArry){
                 //Qnを求める iが偶数:1 , iが奇数:2
-                if (i % 2 == 1)
-                {
+                if (item % 2 == 1){
                     qn = 1;
                 }else{
                     qn = 2;
                 }
                 //Qnと各桁を掛けて和を取る
-                sumPQ = sumPQ + numArry[i] * qn;
+                sumPQ = sumPQ + item * qn;
             }
             //和 mod 9
             chkdigit = (Double)sumPQ % 9;
