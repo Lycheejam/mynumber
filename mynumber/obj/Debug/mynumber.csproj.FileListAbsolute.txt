@@ -16,3 +16,6 @@ E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.csprojResolveAssemblyRefere
 E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.Form1.resources
 E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.Properties.Resources.resources
 E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.csproj.GenerateResource.Cache
+E:\Source\Repos\mynumber - コピー\mynumber\bin\Debug\mynumber.exe.config
+E:\Source\Repos\mynumber - コピー\mynumber\obj\Debug\mynumber.exe
+E:\Source\Repos\mynumber - コピー\mynumber\obj\Debug\mynumber.pdb
