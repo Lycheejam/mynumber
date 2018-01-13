@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace mynumber {
     class RandomNum {
-        //どこで宣言するのが正しい？
-        //メソッドでいちいち宣言するより一回だけの方がええよね？
-        private Random r = new Random();
-
         /// <summary>
         /// 乱数生成
         /// 引数で渡した桁数の乱数を生成する。
@@ -18,6 +14,7 @@ namespace mynumber {
         /// <returns>ランダム整数（配列）</returns>
         public int[] randNum(int digits) {
             int[] numArry = new int[digits];
+            Random r = new Random((int)DateTime.Now.Ticks);
 
             for (int i = 0; i < digits; i++) {
                 //0以上10未満のランダム整数を返す
@@ -28,21 +25,18 @@ namespace mynumber {
         }
         /// <summary>
         /// マイナンバーと住民票コードのチェックデジット計算
-        /// 乱数の格納された配列を渡してあげてね。
         /// </summary>
-        /// <param name="numArry">乱数の配列</param>
+        /// <param name="numArry">乱数配列</param>
         /// <returns>チェックデジット</returns>
         public int chkDigits(int[] numArry) {
             Double chkdigit = 0;
             int qn = 0;
             int sumPQ = 0;
-
-            //ランダム数値の最下位桁を1桁目と考えるので
-            //配列順序を逆転させて計算を楽にする。
+            
+            //最下位桁を1桁目とする。配列順序を逆転
             Array.Reverse(numArry);
 
-            //2~7の重みを計算
-            //これだとマイナンバーの11桁と住民票コードの10桁にしか対応できないけどまあいい？
+            //モジュラス11 ウェイト2～7
             foreach (var item in numArry) {
                 //Qnを求める
                 if (0 < item + 1 && item + 1 < 7) {
@@ -51,16 +45,13 @@ namespace mynumber {
                     qn = item - 5;
                 }
                 //Qnとマイナンバーの各桁を掛けて和を取る
-                sumPQ = sumPQ + item * qn;
+                sumPQ += item * qn;
             }
-            //和 mod 11
+
             chkdigit = (Double)sumPQ % 11;
 
-            //チェックデジットが1以下になった場合
-            //ここってもしかして小数点以下を気にせずに0ならばでいい？
+            //チェックデジットが1以下になった場合。※小数点以下気にする必要ある？
             if (0 <= chkdigit && chkdigit <= 1) {
-                //0 ~ 1ならば
-                //これさ、1以下の数値ってあり得る？
                 chkdigit = 0;
             } else {
                 chkdigit = 11 - chkdigit;

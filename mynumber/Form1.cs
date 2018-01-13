@@ -21,8 +21,11 @@ namespace mynumber {
         private void myNumBtn_Click(object sender, EventArgs e) {
             var sb = new StringBuilder();
             int[] myNumArry = new int[11];
+            //乱数生成
             myNumArry = rn.randNum(11);
+            //チェックデジット計算
             digitResult = rn.chkDigits(myNumArry);
+            //結果表示
             resultBox.Text = rn.NumBinding(myNumArry, digitResult);
         }
 
