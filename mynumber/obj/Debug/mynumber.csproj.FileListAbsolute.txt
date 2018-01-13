@@ -10,3 +10,9 @@ E:\Visual Studio 2015\CProjects\mynumber\mynumber\obj\Debug\mynumber.pdb
 E:\Source\Repos\mynumber\mynumber\bin\Debug\mynumber.exe.config
 E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.exe
 E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.pdb
+E:\Source\Repos\mynumber\mynumber\bin\Debug\mynumber.exe
+E:\Source\Repos\mynumber\mynumber\bin\Debug\mynumber.pdb
+E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.csprojResolveAssemblyReference.cache
+E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.Form1.resources
+E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.Properties.Resources.resources
+E:\Source\Repos\mynumber\mynumber\obj\Debug\mynumber.csproj.GenerateResource.Cache

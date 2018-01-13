@@ -107,5 +107,30 @@ namespace mynumber
             //整数型でチェックデジットを返す。
             return 9 - (int)chkdigit;
         }
+
+        /// <summary>
+        /// 番号を文字列に結合する。
+        /// </summary>
+        /// <param name="numArry">乱数配列</param>
+        /// <param name="checkDigit">チェックデジット</param>
+        /// <returns>番号</returns>
+        public string NumBinding(int[] numArry, int checkDigit) {
+            var sb = new StringBuilder();
+            foreach (var item in numArry) {
+                //sb.Append(item);
+                sb.Append(item.ToString());
+            }
+            //住民票コード/個人番号 or 法人番号
+            if (numArry.Length == 12) {
+                sb.Insert(0, checkDigit.ToString());    //先頭に追加
+                //sb.Insert(0, "X");  //先頭に追加されているかテスト
+
+            } else {
+                sb.Append(checkDigit.ToString());   //末尾に追加
+                //sb.Append("X"); //末尾に追加されているかテスト
+            }
+
+            return sb.ToString();
+        }
     }
 }
